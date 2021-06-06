@@ -2,15 +2,13 @@ const https = require('https')
 const fs = require('fs')
  
 const request = https.request({
-    hostname: 'en.wikipedia.org',
+    hostname: 'juniorfrontend.ir',
     port: 443,
-    path: '/wiki/Snoopy',
+    path: '/',
     method: 'GET'
-},res => {
-    
-    let responseBody = ''
-    res.setEncoding("utf-8")
-
+},res => { 
+    let responseBody = '';
+    res.setEncoding("utf-8"); 
     res.on('data', data => {
         console.log("--chunk--", data.length);
         responseBody += data;
@@ -18,7 +16,7 @@ const request = https.request({
     // -------------------------------
 
     res.on('end',()=>{
-        fs.writeFile('./snoopy.html', responseBody, err=>{
+        fs.writeFile('./junior.html', responseBody, err=>{
             if (err) {
                 throw err;
             }
